@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Fyle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  </head>
+  <style media="screen">
+    body{
+      font-family: aktiv-grotesk, sans-serif;
+      color:black;
+    }
+    #con{
+      padding-left:300px;
+      padding-top:170px;
+      padding-bottom:170px;
+    }
+    p{
+      color: #31373D;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  width: auto;
+  text-align: left;
+    }
+    .ui.inverted.blue.button{
+      color:black;
+      padding:15px 60px;
+    }
+    #bt1{
+      background-color: #0099FF;
+      padding:15px 60px;
+      margin-right:15px;
+      color: white;
+      margin-bottom: 15px;
+    }
+    .ui.inverted.blue.button:hover{
+      color:white;
+    }
+    #header{
+      color: #31373D;
+  font-size: 47px;
+  font-weight: 1000;
+  line-height: 58px;
+  width: auto;
+  text-align: left;
+    }
+    #con2{
+      background-image: linear-gradient(44.59deg, #D5E2E9 0%, #EAEEF1 100%);
+      width: 1267px;
+      height: 409px;
+    }
+    h2{
+      font-weight:700;
+      padding-top:50px;
+      padding-bottom:25px;
+      text-align:center;
+    }
+    #seg{
+      padding:30px 0px;
+    }
+    #button{
+      color:black;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 46px;
+      height: 20px;
+    }
+
+    /* Hide default HTML checkbox */
+    .switch input {display:none;}
+
+    /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left:2px;
+      bottom: 2px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+    #slider{
+      padding-bottom:5px;
+      text-align:center;
+    }
+    span {
+  content: "\201C";
+}
+    </style>
+    <script>
+      var annual1=0.5,annual2=1,pro1=0,pro2=0,serving=25,saving;
+      $(document).ready(function(){
+        $('#b1').click(function(){
+          $("#serving1").html("For 25 serving");
+          $("#serving2").html("For 25 serving");
+          toggle();
+          serving=25;
+          calculate();
+        });
+        $('#b2').click(function(){
+          $("#serving1").html("For 50 serving");
+          $("#serving2").html("For 50 serving");
+          toggle();
+          serving=50;
+          calculate();
+        });
+        $('#b3').click(function(){
+          $("#serving1").html("For 100 serving");
+          $("#serving2").html("For 100 serving");
+          toggle();
+          serving=100;
+          calculate();
+        });
+        $('#b4').click(function(){
+          $("#serving1").html("For 200 serving");
+          $("#serving2").html("For 200 serving");
+          toggle();
+          serving=200;
+          calculate();
+        });
+        toggle();
+        function toggle(){
+          $('input[type="checkbox"]').click(function(){
+              if($(this).prop("checked") == true){
+                  $("#annual1").html("per month");
+                  $("#annual2").html("per month");
+                  $("#annual3").html("per month");
+                  annual1=1;annual2=2;
+                  console.log(annual1);
+                  calculate();
+              }
+              else if($(this).prop("checked") == false){
+                  $("#annual1").html("per annum");
+                  $("#annual2").html("per annum");
+                  $("#annual3").html("per annum");
+                  annual1=0.5;annual2=1;
+                  console.log(annual1);
+                  calculate();
+              }
+          });
+        }
+        function calculate(){
+          pro1=annual1*serving;
+          pro2=annual2*serving;
+          console.log(annual1);
+          saving = pro2 - pro1;
+          console.log(result);
+          $("#cost1").html("$"+pro1);
+          $("#cost2").html("$"+pro2);
+          $("#result").html("$"+saving);
+        }
+    });
+
+      </script>
+  <body>
+      <div class="ui grid">
+        <div class="row" style="padding:150px 0px 150px 20px;">
+          <div class="sixteen wide mobile eight wide tablet sixteen wide computer column">
+            <div class="ui container">
+              <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                  <div class="eight wide column">
+                    <h1 class="ui header" id="header">Looking for a <br>lollipop alternative ?</h1>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+                    <button class="ui button" id="bt1">Primary&nbsp&nbsp&nbspCTA</button>
+                    <button class="ui inverted blue button" >Secondry CTA</button>
+                  </div>
+                  <div class="eight wide right floated column">
+                    <img class="ui centered medium image" src="images/capture1.png">
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="sixteen wide mobile eight wide tablet sixteen wide computer column">
+            <div class="ui container" id="con2">
+                <h2>This is a heading in <br> two lines</h2>
+                <img class="ui centered medium image" src="images/Group 6/png/Group 6.png" alt="" style="width:698px;height:513px;">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="sixteen wide mobile eight wide tablet sixteen wide computer column">
+            <div class="ui text container">
+              <h1 class="ui center aligned header" style="padding-top:300px;">Compare pricing today!</h1>
+              <h4 style="text-align:center;">Lorem Ipsum is simply dummy text of the printing and<a> typesetting.</a></h4>
+              <div id="seg">
+                  <div class="four ui inverted blue basic buttons" id="btngrp">
+                    <button class="ui button" value="25" id="b1"><i style="color:black">25 Serving</i></button>
+                    <button class="ui button" value="50" id="b2"><i style="color:black">50 Serving</i></button>
+                    <button class="ui button" value="100" id="b3"><i style="color:black">100 Serving</i></button>
+                    <button class="ui button" value="200" id="b4"><i style="color:black">200 Serving</i></button>
+                  </div>
+              </div>
+              <div id="slider">
+                <b style="font-size:20px;">Annual</b>
+                <small>50% off &nbsp&nbsp&nbsp&nbsp</small>
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider round"></span>
+                </label>
+                <b style="font-size:20px;">&nbsp&nbsp&nbsp&nbspMonthly</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sixteen wide mobile eight wide tablet sixteen wide computer column">
+          <div class="ui text container">
+            <div class="ui three stackable cards">
+              <a class="red card">
+                <div class="content">
+                  <div class="header">Lollipop</div>
+                  <h1 class="ui blue header" id="cost1">$12.5</h1><i class="meta" id="annual1">per annum</i>
+                  <div class="meta" id="serving1">
+                    For 25 serving
+                  </div>
+                </div>
+              </a>
+              <a class="orange card">
+                <div class="content">
+                  <div class="header">Icecandy</div>
+                  <h1 class="ui blue header" id="cost2">$25</h1><i class="meta" id="annual2">per annum</i>
+                  <div class="meta" id="serving2">
+                    For 25 serving
+                  </div>
+                </div>
+              </a>
+              <a class="yellow card">
+                <div class="content">
+                  <div class="header">Your Saving with Lollipop</div>
+                  <h1 class="ui blue header" id="result">$12.5</h1><i class="meta" id="annual3">per annum</i>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="padding-top:100px;">
+          <div class="sixteen wide mobile eight wide tablet sixteen wide computer column">
+            <div class="ui text container">
+              <h1 class="ui center aligned header" style="padding-top:50px;">Here’s what our customers have to say </h1>
+              <div class="ui vertical stripe segment">
+                <div class="ui middle aligned stackable grid container">
+                  <div class="row">
+                    <div class="eight wide column">
+                      <img class="ui medium circular image" src="images/p.jpeg">
+                    </div>
+                    <div class="eight wide column">
+                      <h3><span style="font-size:4em;color:#4295f5">&#8220;</span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</h3>
+                      <h3 class="ui header">
+                        Raja Ram
+                        <div class="sub header">TIP World</div>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="padding:100px 0px 100px 30px;">
+          <div class="sixteen wide mobile eight wide tablet sixteen wide computer column">
+            <div class="ui text container">
+              <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                  <div class="eight wide column">
+                    <h1 class="ui header">Loved by users,<br>ecommended by experts</h1>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                    <button class="ui button" id="bt1">Primary CTA</button>
+                  </div>
+                  <div class="eight wide right floated column">
+                    <img class="ui right floated image" src="images/Group 4/png/Group 4.png" >
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
